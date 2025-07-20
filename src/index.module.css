@@ -110,7 +110,7 @@
 }
 
 :root{
-    --green-color:#34C948;
-    --black-color:#121212;
-    --white-color:#ffffff;
+    --color-primary:#34C948;
+    --color-black:#121212;
+    --color-white:#ffffff;
 }
