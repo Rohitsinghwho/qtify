@@ -1,11 +1,12 @@
 import React from "react";
 import styles from "./Search.module.css";
-import { ReactComponent as SearchIcon } from "../../assets/Search-icon.svg";
-import useAutocomplete from "@mui/base/useAutocomplete";
+import {useAutocomplete} from "@mui/base/useAutocomplete";
 import { styled } from "@mui/system";
-import { truncate } from "../../helpers/helpers";
+
 import { useNavigate } from "react-router-dom";
-import { Tooltip } from "@mui/material";
+import { Tooltip, Typography } from "@mui/material";
+import searchIcon from "../../assets/search.svg";
+
 
 const Listbox = styled("ul")(({ theme }) => ({
   width: "100%",
@@ -78,7 +79,7 @@ function Search({ searchData, placeholder }) {
         </div>
         <div>
           <button className={styles.searchButton} type="submit">
-            <SearchIcon />
+              <img src={searchIcon} alt="searchicon" />
           </button>
         </div>
       </form>
@@ -99,9 +100,11 @@ function Search({ searchData, placeholder }) {
                 <div>
                   <p className={styles.albumTitle}>{option.title}</p>
 
-                  <p className={styles.albumArtists}>
-                    {truncate(artists.join(", "), 40)}
-                  </p>
+                  <Tooltip title={artists.join(", ")}>
+                      <Typography className={styles.albumArtists} noWrap sx={{overflow:"hidden", textOverflow:"ellipsis", display:"block"}}>
+                        {artists.join(", ")}
+                      </Typography>
+                  </Tooltip>
                 </div>
               </li>
             );
